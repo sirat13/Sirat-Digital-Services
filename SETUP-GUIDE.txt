@@ -1,0 +1,68 @@
+SIRAT DIGITAL SERVICES — FREE PUBLIC WEBSITE + PRIVATE ADMIN
+
+WHAT THIS PACKAGE DOES
+- Public-facing responsive website.
+- Public service list and proof gallery.
+- WhatsApp order request.
+- Supabase-backed private admin login.
+- Admin can edit site settings, add/delete services, upload/delete proof images, and view submitted orders.
+- Website hosting can be free with GitHub Pages. Supabase has a free tier, subject to its current limits and policies.
+
+IMPORTANT: I cannot publish this under your accounts from this chat. You must create the free accounts and complete the short setup below. This package is ready for that setup.
+
+PART A — CREATE THE DATABASE (SUPABASE)
+1. Open https://supabase.com/ and create a free account/project.
+2. Create a project named sirat-digital-services. Save the database password privately.
+3. In your project, open SQL Editor > New query.
+4. Open supabase_setup.sql from this package, copy all its contents, paste into SQL Editor and click Run.
+   This creates the tables, public read access, private owner-only admin policies, order inbox and proof image storage.
+5. Open Project Settings > API (or API Keys, depending on dashboard layout).
+6. Copy the Project URL and the anon/public key. Do NOT copy the service_role/secret key.
+7. Open config.js and replace:
+   PASTE_YOUR_SUPABASE_PROJECT_URL_HERE
+   PASTE_YOUR_SUPABASE_ANON_KEY_HERE
+   with your project's Project URL and anon/public key.
+
+PART B — CREATE YOUR PRIVATE ADMIN LOGIN
+1. In Supabase, open Authentication > Users > Add user.
+2. Create a user using your owner email: siratakanda06@gmail.com and a strong password you keep private.
+3. If the dashboard asks to confirm the email, use the confirmation option there or complete the email confirmation.
+4. The SQL policies authorize only this exact email to edit the site and read orders. Do not share the password.
+5. Admin page is opened from the “Admin Login” button on your public website.
+
+PART C — PUBLISH FOR FREE WITH GITHUB PAGES
+1. Open https://github.com/ and create/sign in to your account.
+2. Create a new PUBLIC repository named sirat-digital-services (public is required for free GitHub Pages on GitHub Free).
+3. Upload all package contents to the repository root:
+   index.html, config.js, supabase_setup.sql, SETUP-GUIDE.txt, and the assets folder with its images.
+4. Commit the files.
+5. In the repository, open Settings > Pages.
+6. Under Build and deployment, select Deploy from a branch; choose branch main and folder /(root), then Save.
+7. Wait for GitHub Pages to publish. The site address will be:
+   https://YOUR-GITHUB-USERNAME.github.io/sirat-digital-services/
+   Replace YOUR-GITHUB-USERNAME with your GitHub username.
+8. Open that URL in Chrome to test it.
+
+PART D — TEST
+- Open the public URL in a private/incognito browser: services and proof gallery should be visible.
+- Submit a test order; it should open WhatsApp and, if Supabase is configured, also save an order request.
+- Click Admin Login and sign in with the owner email/password.
+- Change the homepage text and save; refresh the public page to see the change.
+- Add a test service and upload a proof image.
+- Check Orders tab for submitted test orders.
+
+SECURITY / PRIVACY NOTES
+- Never put a Supabase service_role key or database password in config.js or any public file.
+- The anon/public key is intended for browser use; the SQL Row Level Security policies protect admin-only actions.
+- The owner email is visible in this setup file and is used as the allowlist. Do not use a different email unless you also update the email in supabase_setup.sql and rerun the relevant policies.
+- The public order form stores the customer name, phone number and request details in your database. Add a privacy notice if required for your intended use; do not collect unnecessary personal information.
+- Do not publish payment PINs, passwords, one-time codes or private account credentials. List payment methods only; provide transaction-specific instructions privately.
+- The $100 service is presented as watch-time consulting and genuine audience-growth strategy, not artificial watch-hour delivery. Do not promise artificial engagement, guaranteed watch hours or guaranteed monetization.
+- Free tiers have usage limits and may change. A custom domain is optional and generally costs money; the GitHub Pages URL is free.
+
+IF SOMETHING DOES NOT WORK
+- Check that config.js contains the correct Supabase Project URL and anon/public key.
+- Check that supabase_setup.sql ran without errors.
+- Check that the admin account email exactly matches siratakanda06@gmail.com.
+- In Supabase Authentication, ensure the account is confirmed.
+- GitHub Pages may take several minutes to publish after first setup.
